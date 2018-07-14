@@ -6,7 +6,7 @@ import PlaceList from './PlaceList'
 // import the places data
 import jsonPlaces from './data/places.json';
 
-export class MapContainer extends React.Component {
+export class MapContainer extends Component {
 
   state = {
     // Holds all the places that will be rendered
@@ -30,6 +30,7 @@ export class MapContainer extends React.Component {
            {/* Map over all places to display their markers */}
            {this.state.places.map( (place) => (
              <Marker
+               key={place.foursqId}
                title={place.name}
                name={place.name}
                position={place.position}
