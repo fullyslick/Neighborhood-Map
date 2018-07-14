@@ -3,21 +3,15 @@ import React, {Component} from 'react'
 // which will configure the request to Google Maps API
 import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import PlaceList from './PlaceList'
+// import the places data
+import jsonPlaces from './data/places.json';
 
 export class MapContainer extends React.Component {
 
   state = {
     // Holds all the places that will be rendered
-    places: [
-      {
-        name: "A1",
-        position: {lat: 43.2050135, lng: 27.9197479}
-      },
-      {
-        name: "A2",
-        position: {lat: 43.2035932, lng: 27.9172729}
-      }
-    ]
+    // Load them from a local .json file
+    places: jsonPlaces.places
   }
 
   render(){

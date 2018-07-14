@@ -1,0 +1,86 @@
+{
+  "places": [{
+      "name": "Sea Garden of Varna",
+      "position": {
+        "lat": "43.20527918074666",
+        "lng": "27.9246998744787"
+      },
+      "foursqId": "4be52e759026ef3b0cb70a38",
+      "category": "sights"
+    }, {
+      "name": "Cathedral of the Assumption of the Virgin",
+      "position": {
+        "lat": "43.205257",
+        "lng": "27.90982"
+      },
+      "foursqId": "4db27f528154eb510deb3fd4",
+      "category": "sights"
+    }, {
+      "name": "Roman Baths",
+      "position": {
+        "lat": "43.19982862009259",
+        "lng": "27.91728772147772"
+      },
+      "foursqId": "4e28267d6284ab5e8ad234b1",
+      "category": "sights"
+    }, {
+      "name": "Aquarium",
+      "position": {
+        "lat": "43.2017402279325",
+        "lng": "27.921722599309458"
+      },
+      "foursqId": "4e2993ebc65ba11f4c67e336",
+      "category": "sights"
+    },
+    {
+      "name": "Staria Chinar",
+      "position": {
+        "lat": "43.19961169240424",
+        "lng": "27.9151566167849"
+      },
+      "foursqId": "5316ed3511d216afb10fd1f7",
+      "category": "restaurants"
+    },
+    {
+      "name": "La Bocca",
+      "position": {
+        "lat": "43.20668090880212",
+        "lng": "27.921046689862354"
+      },
+      "foursqId": "5842ab775a58693fa1a8c45e",
+      "category": "restaurants"
+    }, {
+      "name": "The Sea Terrace",
+      "position": {
+        "lat": "43.20241480623692",
+        "lng": "27.924357356650685"
+      },
+      "foursqId": "558c296d498ede358ffa0c57",
+      "category": "restaurants"
+    }, {
+      "name": "Pampero",
+      "position": {
+        "lat": "43.20328741361943",
+        "lng": "27.913376009344912"
+      },
+      "foursqId": "566d8f1f498eca401423206c",
+      "category": "bars"
+    }, {
+      "name": "Cubo",
+      "position": {
+        "lat": "43.20225485726357",
+        "lng": "27.923909425735474"
+      },
+      "foursqId": "4dd84c3d52b1a5c644630c2c",
+      "category": "bars"
+    }, {
+      "name": "Sundogs",
+      "position": {
+        "lat": "43.20344889745036",
+        "lng": "27.917216031970316"
+      },
+      "foursqId": "4c0a27d5009a0f47d4ece8bf",
+      "category": "bars"
+    }
+  ]
+}
