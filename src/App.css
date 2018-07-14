@@ -16,8 +16,17 @@ html {
   font-size: 100.01%;
 }
 
+/* ========= Header =========== */
+header{
+  background: #efcb8a;
+}
 /* ========== Components structure ========= */
 .wrapper{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+main{
   display: flex;
   flex-flow: row nowrap;
 }

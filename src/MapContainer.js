@@ -7,7 +7,7 @@ import PlaceList from './PlaceList'
 export class MapContainer extends React.Component {
   render(){
     return(
-      <div className="wrapper">
+      <main>
         <PlaceList />
         <div className="map-holder">
          <Map
@@ -19,7 +19,7 @@ export class MapContainer extends React.Component {
           zoom={15}
          />
         </div>
-      </div>
+      </main>
     )
   }
 }

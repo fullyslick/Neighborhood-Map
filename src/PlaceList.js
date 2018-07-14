@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class PlaceList extends Component{
   render(){
     return(
-      <div class="place-list">Place List</div>
+      <div className="place-list">Place List</div>
     )
   }
 }
