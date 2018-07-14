@@ -5,6 +5,7 @@ import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import PlaceList from './PlaceList'
 
 export class MapContainer extends React.Component {
+
   render(){
     return(
       <main>
@@ -17,7 +18,12 @@ export class MapContainer extends React.Component {
             lng: 27.9165577
             }}
           zoom={15}
-         />
+         >
+           <Marker
+             title={'Hotel Cherno More'}
+             name={'Cherno More Hotel'}
+             position={{lat: 43.2050135, lng: 27.9197479}} />
+         </Map>
         </div>
       </main>
     )
