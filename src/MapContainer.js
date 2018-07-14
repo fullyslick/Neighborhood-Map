@@ -38,7 +38,8 @@ export class MapContainer extends React.Component {
              <Marker
                title={place.name}
                name={place.name}
-               position={place.position} />
+               position={place.position}
+               animation={this.props.google.maps.Animation.DROP} />
            ))}
          </Map>
         </div>
