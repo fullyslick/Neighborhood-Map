@@ -28,10 +28,10 @@ export class MapContainer extends React.Component {
          <Map
           google={this.props.google}
           initialCenter={{
-            lat: 43.2009149,
-            lng: 27.9165577
+            lat: 43.204257,
+            lng: 27.922284
             }}
-          zoom={15}
+          zoom={16}
          >
            {/* Map over all places to display their markers */}
            {this.state.places.map( (place) => (
