@@ -63,7 +63,6 @@ export class MapContainer extends Component {
 
     return(
       <main>
-        <PlaceList />
         <div className="map-holder">
          <Map
           style={{width: '100%', height: '100%', position: 'relative'}}
@@ -94,6 +93,7 @@ export class MapContainer extends Component {
            ))}
          </Map>
         </div>
+        <PlaceList />
       </main>
     )
   }

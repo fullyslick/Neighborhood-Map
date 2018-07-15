@@ -16,7 +16,7 @@ html {
   font-size: 100.01%;
 }
 
-/* ========= Header =========== */
+/* Header */
 
 header {
   background: #efcb8a;
@@ -30,7 +30,7 @@ h1 {
   vertical-align: middle;
 }
 
-/* ========== Components structure ========= */
+/* Components structure */
 
 .wrapper {
   position: relative;
@@ -45,15 +45,38 @@ main {
 
 .place-list {
   width: 500px;
+  order: 1;
 }
 
 .map-holder {
   position: relative;
+  order: 2;
   height: calc(100vh - 50px);
   width: 100%;
 }
 
-#map {
-  height: 100%;
-  margin: 0px;
+/* Mobile Version */
+
+@media only screen and (max-width: 800px) {
+  /* Header */
+  header {
+    position: fixed;
+  }
+  /* Components */
+  .wrapper {
+    height: 100%;
+  }
+  .map-holder {
+    order: 1;
+    margin: 50px 0 0 0;
+    position: fixed;
+    width: 100%;
+    height: 350px;
+  }
+  .place-list {
+    order: 2;
+    width: 100%;
+    position: relative;
+    margin-top: 450px;
+  }
 }
