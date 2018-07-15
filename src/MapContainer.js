@@ -121,7 +121,8 @@ export class MapContainer extends Component {
                // Allow hover effects only is there is no selected Place/ marker clicked
                onMouseover={!this.state.selectedPlaceId && this.onMouseoverMarker}
                onMouseout={!this.state.selectedPlaceId && this.onMouseoutMarker}
-               onClick={this.onMarkerClick}
+               // Allow clicking on marker only is there is no selected Place/ marker clicked,
+               onClick={!this.state.selectedPlaceId && this.onMarkerClick}
                key={place.foursqId}
                id={place.foursqId}
                title={place.name}
