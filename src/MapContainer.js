@@ -26,6 +26,7 @@ export class MapContainer extends Component {
             lng: 27.922284
             }}
           zoom={16}
+          gestureHandling={"none"}
          >
            {/* Map over all places to display their markers */}
            {this.state.places.map( (place) => (
