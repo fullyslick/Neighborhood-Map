@@ -81,9 +81,15 @@ export class MapContainer extends Component {
     // - chosen category
     let displayedPlaces;
 
+    // Holds the marker look, depending if it is selected or not
+    // By default its blue
+    let markerColor = "./icons/pin-blue.png";
+
     // Display only the chosen marker/place if selectedPlaceId has value
     if (this.state.selectedPlaceId) {
       displayedPlaces = this.state.places.filter((place) => place.foursqId === this.state.selectedPlaceId );
+      // Change marker color to be selected
+      markerColor = "./icons/pin-orange.png";
     }
      // Else there is no chosen marker, so display markers by category
      else {
@@ -112,8 +118,9 @@ export class MapContainer extends Component {
            {/* Map over displayedPlaces to display their markers */}
            {displayedPlaces.map( (place) => (
              <Marker
-               onMouseover={this.onMouseoverMarker}
-               onMouseout={this.onMouseoutMarker}
+               // Allow hover effects only is there is no selected Place/ marker clicked
+               onMouseover={!this.state.selectedPlaceId && this.onMouseoverMarker}
+               onMouseout={!this.state.selectedPlaceId && this.onMouseoutMarker}
                onClick={this.onMarkerClick}
                key={place.foursqId}
                id={place.foursqId}
@@ -121,11 +128,12 @@ export class MapContainer extends Component {
                name={place.name}
                position={place.position}
                icon={{
-                     url: "./icons/pin-blue.png",
+                     url: markerColor,
                      anchor: new this.props.google.maps.Point(32,32),
                      scaledSize: new this.props.google.maps.Size(32,32)
                    }}
-               animation={this.props.google.maps.Animation.DROP} />
+               // Show animation only is there is no selected Place / marker clicked
+               animation={!this.state.selectedPlaceId && this.props.google.maps.Animation.DROP} />
            ))}
          </Map>
         </div>
