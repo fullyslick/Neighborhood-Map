@@ -138,7 +138,7 @@ export class MapContainer extends Component {
            ))}
          </Map>
         </div>
-        <PlaceList places={displayedPlaces} />
+        <PlaceList places={displayedPlaces} selectedPlace={this.state.selectedPlaceId}/>
       </main>
     )
   }
