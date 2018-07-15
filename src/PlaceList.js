@@ -18,8 +18,11 @@ class PlaceList extends Component {
                /> :
              // Render places list if there is no place selected
              <div>
-               <p>Place List</p>
-               <Filter/> {this.props.places.map((place) => (
+               <Filter
+                 setCategory={this.props.setCategory}
+                 category={this.props.category}
+                />
+               {this.props.places.map((place) => (
                  <Place
                    key={place.foursqId}
                    id={place.foursqId}

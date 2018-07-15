@@ -66,6 +66,14 @@ export class MapContainer extends Component {
   closeDetails = () => {
       this.setState({selectedPlaceId: "" });
   }
+
+  // Sets the category in the state,
+  // cause re-render and displaying only of
+  // places with this categoryChosen
+  setCategory = (category) => {
+    this.setState({categoryChosen: category});
+  }
+
   // When the map loads, make sure it fit the bounds of the markers
   fitBounds = (mapProps, map) => {
 
@@ -155,6 +163,8 @@ export class MapContainer extends Component {
           selectedPlace={this.state.selectedPlaceId}
           showDetails={this.showDetails}
           closeDetails={this.closeDetails}
+          setCategory={this.setCategory}
+          category={this.state.categoryChosen}
           />
       </main>
     )
