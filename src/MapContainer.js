@@ -38,6 +38,25 @@ export class MapContainer extends Component {
     marker.setIcon(markerImage);
   }
 
+  // When the map loads, make sure it fit the bounds of the markers
+  fitBounds = (mapProps, map) => {
+
+    // Make the google object easy to access
+    const {google} = mapProps;
+
+    // Aggragates the position of markers to
+    // adjust the center and zoom of the map.
+    var bounds = new google.maps.LatLngBounds();
+
+    // Loop over all markers positions and add them to bounds
+    for (var i = 0; i < this.state.places.length; i++) {
+      bounds.extend(this.state.places[i].position);
+    }
+
+    // Make the markers to be within the bounds of the map
+    map.fitBounds(bounds);
+  }
+
   render(){
     // Set the map styles to const for easy access
     const style = jsonMapStyles.styles;
@@ -47,12 +66,13 @@ export class MapContainer extends Component {
         <PlaceList />
         <div className="map-holder">
          <Map
+          style={{width: '100%', height: '100%', position: 'relative'}}
           google={this.props.google}
+          onReady={this.fitBounds}
           initialCenter={{
-            lat: 43.204257,
-            lng: 27.922284
+            lat: 43.201,
+            lng: 27.922
             }}
-          zoom={16}
           styles= {style}
           gestureHandling={"none"}
          >
