@@ -17,7 +17,11 @@ export class MapContainer extends Component {
 
     // Holds the chosen category,
     // used to filter out the markers and PlaceList by category
-    categoryChosen: "all" // default is "all"
+    categoryChosen: "all", // default is "all"
+
+    // Holds the id of the selected marker/place,
+    // used to display only selected places on PlaceList and Map
+    selectedPlaceId: ""
   }
 
   // Change color of marker on mouse over event
@@ -41,6 +45,14 @@ export class MapContainer extends Component {
 
     marker.setIcon(markerImage);
   }
+
+  // Changes the state.selectedPlaceId
+  // Make only selected marker visible on the map,
+  // invokes displaying of foursquare details
+  onMarkerClick = (props, marker, e) => {
+    this.setState({selectedPlaceId: props.id });
+  }
+
 
   // When the map loads, make sure it fit the bounds of the markers
   fitBounds = (mapProps, map) => {
@@ -69,12 +81,19 @@ export class MapContainer extends Component {
     // - chosen category
     let displayedPlaces;
 
-    // If categoryChosen = all, add to displayedPlaces all places
-    // Else - add to displayedPlaces those places which mach categoryChosen
-    if (this.state.categoryChosen === "all") {
-      displayedPlaces = this.state.places.map( (place) => place );
-    } else {
-      displayedPlaces = this.state.places.filter((place) => place.category === this.state.categoryChosen );
+    // Display only the chosen marker/place if selectedPlaceId has value
+    if (this.state.selectedPlaceId) {
+      displayedPlaces = this.state.places.filter((place) => place.foursqId === this.state.selectedPlaceId );
+    }
+     // Else there is no chosen marker, so display markers by category
+     else {
+      // If categoryChosen = all, add to displayedPlaces all places
+      // Else - add to displayedPlaces those places which mach categoryChosen
+      if (this.state.categoryChosen === "all") {
+        displayedPlaces = this.state.places.map( (place) => place );
+      } else {
+        displayedPlaces = this.state.places.filter((place) => place.category === this.state.categoryChosen );
+      }
     }
 
     return(
@@ -95,7 +114,9 @@ export class MapContainer extends Component {
              <Marker
                onMouseover={this.onMouseoverMarker}
                onMouseout={this.onMouseoutMarker}
+               onClick={this.onMarkerClick}
                key={place.foursqId}
+               id={place.foursqId}
                title={place.name}
                name={place.name}
                position={place.position}
