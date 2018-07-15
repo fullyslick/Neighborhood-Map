@@ -5,6 +5,8 @@ import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import PlaceList from './PlaceList'
 // import the places data
 import jsonPlaces from './data/places.json';
+// import the map styles data
+import jsonMapStyles from './data/mapStyles.json';
 
 export class MapContainer extends Component {
 
@@ -15,6 +17,9 @@ export class MapContainer extends Component {
   }
 
   render(){
+    // Set the map styles to const for easy access
+    const style = jsonMapStyles.styles;
+
     return(
       <main>
         <PlaceList />
@@ -26,6 +31,7 @@ export class MapContainer extends Component {
             lng: 27.922284
             }}
           zoom={16}
+          styles= {style}
           gestureHandling={"none"}
          >
            {/* Map over all places to display their markers */}
