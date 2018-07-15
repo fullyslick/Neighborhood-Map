@@ -13,7 +13,11 @@ export class MapContainer extends Component {
   state = {
     // Holds all the places that will be rendered
     // Load them from a local .json file
-    places: jsonPlaces.places
+    places: jsonPlaces.places,
+
+    // Holds the chosen category,
+    // used to filter out the markers and PlaceList by category
+    categoryChosen: "all" // default is "all"
   }
 
   // Change color of marker on mouse over event
@@ -61,6 +65,18 @@ export class MapContainer extends Component {
     // Set the map styles to const for easy access
     const style = jsonMapStyles.styles;
 
+    // Holds the places to be shown depending:
+    // - chosen category
+    let displayedPlaces;
+
+    // If categoryChosen = all, add to displayedPlaces all places
+    // Else - add to displayedPlaces those places which mach categoryChosen
+    if (this.state.categoryChosen === "all") {
+      displayedPlaces = this.state.places.map( (place) => place );
+    } else {
+      displayedPlaces = this.state.places.filter((place) => place.category === this.state.categoryChosen );
+    }
+
     return(
       <main>
         <div className="map-holder">
@@ -74,8 +90,8 @@ export class MapContainer extends Component {
             }}
           styles= {style}
          >
-           {/* Map over all places to display their markers */}
-           {this.state.places.map( (place) => (
+           {/* Map over displayedPlaces to display their markers */}
+           {displayedPlaces.map( (place) => (
              <Marker
                onMouseover={this.onMouseoverMarker}
                onMouseout={this.onMouseoutMarker}
