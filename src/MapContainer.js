@@ -4,9 +4,9 @@ import React, {Component} from 'react'
 import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import PlaceList from './PlaceList'
 // import the places data
-import jsonPlaces from './data/places.json';
+import jsonPlaces from './data/places.json'
 // import the map styles data
-import jsonMapStyles from './data/mapStyles.json';
+import jsonMapStyles from './data/mapStyles.json'
 
 export class MapContainer extends Component {
 
@@ -41,6 +41,11 @@ export class MapContainer extends Component {
                title={place.name}
                name={place.name}
                position={place.position}
+               icon={{
+                     url: "./icons/pin-blue.png",
+                     anchor: new this.props.google.maps.Point(32,32),
+                     scaledSize: new this.props.google.maps.Size(32,32)
+                   }}
                animation={this.props.google.maps.Animation.DROP} />
            ))}
          </Map>
