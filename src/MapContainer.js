@@ -145,8 +145,8 @@ export class MapContainer extends Component {
                      anchor: new this.props.google.maps.Point(32,32),
                      scaledSize: new this.props.google.maps.Size(32,32)
                    }}
-               // Show animation only is there is no selected Place / marker clicked
-               animation={!this.state.selectedPlaceId && this.props.google.maps.Animation.DROP} />
+               // Show animation only is there is a selected Place / marker clicked
+               animation={this.state.selectedPlaceId && this.props.google.maps.Animation.DROP} />
            ))}
          </Map>
         </div>
