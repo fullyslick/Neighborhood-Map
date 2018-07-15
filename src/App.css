@@ -55,6 +55,13 @@ main {
   width: 100%;
 }
 
+/* PlaceList */
+.place-in-list {
+    width: 100%;
+    text-align: left;
+    padding: 5px;
+}
+
 /* Mobile Version */
 
 @media only screen and (max-width: 800px) {

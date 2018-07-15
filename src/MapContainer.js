@@ -50,9 +50,15 @@ export class MapContainer extends Component {
   // Make only selected marker visible on the map,
   // invokes displaying of foursquare details
   onMarkerClick = (props, marker, e) => {
-    this.setState({selectedPlaceId: props.id });
+    this.showDetails(props.id);
   }
 
+  // Changes the selected place,
+  // displays the details of the place,
+  // leave only one marker on map
+  showDetails = (placeId) => {
+    this.setState({selectedPlaceId: placeId });
+  }
 
   // When the map loads, make sure it fit the bounds of the markers
   fitBounds = (mapProps, map) => {
@@ -138,7 +144,11 @@ export class MapContainer extends Component {
            ))}
          </Map>
         </div>
-        <PlaceList places={displayedPlaces} selectedPlace={this.state.selectedPlaceId}/>
+        <PlaceList
+          places={displayedPlaces}
+          selectedPlace={this.state.selectedPlaceId}
+          showDetails={this.showDetails}
+          />
       </main>
     )
   }
