@@ -16,6 +16,28 @@ export class MapContainer extends Component {
     places: jsonPlaces.places
   }
 
+  // Change color of marker on mouse over event
+  onMouseoverMarker = (props, marker, e) => {
+    let markerImage = {
+      url: "./icons/pin-orange.png",
+      anchor: new this.props.google.maps.Point(32, 32),
+      scaledSize: new this.props.google.maps.Size(32, 32)
+    }
+
+    marker.setIcon(markerImage);
+  }
+
+  // Change color of marker on mouse out event
+  onMouseoutMarker = (props, marker, e) => {
+    let markerImage = {
+      url: "./icons/pin-blue.png",
+      anchor: new this.props.google.maps.Point(32, 32),
+      scaledSize: new this.props.google.maps.Size(32, 32)
+    }
+
+    marker.setIcon(markerImage);
+  }
+
   render(){
     // Set the map styles to const for easy access
     const style = jsonMapStyles.styles;
@@ -37,6 +59,8 @@ export class MapContainer extends Component {
            {/* Map over all places to display their markers */}
            {this.state.places.map( (place) => (
              <Marker
+               onMouseover={this.onMouseoverMarker}
+               onMouseout={this.onMouseoutMarker}
                key={place.foursqId}
                title={place.name}
                name={place.name}
