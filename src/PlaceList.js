@@ -5,12 +5,15 @@ import PlaceDetails from './PlaceDetails'
 
 class PlaceList extends Component {
   render() {
+
     return (
       <div className="place-list">
         <div>
           <p>Place List</p>
           <Filter/>
-          <Place/>
+          {this.props.places.map( (place) => (
+              <Place title={place.name}/>
+          ))}
         </div>
         <PlaceDetails/>
       </div>

@@ -138,7 +138,7 @@ export class MapContainer extends Component {
            ))}
          </Map>
         </div>
-        <PlaceList />
+        <PlaceList places={displayedPlaces} />
       </main>
     )
   }
