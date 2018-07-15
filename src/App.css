@@ -55,11 +55,21 @@ main {
   width: 100%;
 }
 
-/* PlaceList */
+/* Places List View */
+
 .place-in-list {
-    width: 100%;
-    text-align: left;
-    padding: 5px;
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+}
+
+/* Place Details View */
+
+.close-details {
+  float: right;
+  display: block;
+  width: 50px;
+  height: 50px;
 }
 
 /* Mobile Version */

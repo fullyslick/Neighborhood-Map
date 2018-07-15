@@ -60,6 +60,12 @@ export class MapContainer extends Component {
     this.setState({selectedPlaceId: placeId });
   }
 
+  // Sets selectedPlaceId to empty string,
+  // and cause displaying of all or categorized markers,
+  // and cause removal of details view
+  closeDetails = () => {
+      this.setState({selectedPlaceId: "" });
+  }
   // When the map loads, make sure it fit the bounds of the markers
   fitBounds = (mapProps, map) => {
 
@@ -148,6 +154,7 @@ export class MapContainer extends Component {
           places={displayedPlaces}
           selectedPlace={this.state.selectedPlaceId}
           showDetails={this.showDetails}
+          closeDetails={this.closeDetails}
           />
       </main>
     )
