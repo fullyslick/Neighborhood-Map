@@ -61,14 +61,27 @@ class PlaceDetails extends Component {
 
   render() {
     console.log(this.state.fetchedPlace);
+    // Refers to closing details (back) button
+    const backButton = <button className="close-details" type="button" onClick={this.closeDetails}>X</button>;
     return (
        <div className="PlaceDetails">
         {/* Check if the request is complete */}
-         {this.state.loading ? <div className="loading-screen">Loading . . .</div>
-         : this.state.hasError ? <div className="error-screen">Oops! Could not get details from foursquare.</div>
+         {this.state.loading ?
+           // Show loading screen untill fetch request is complete
+           <div className="loading-screen">
+             {backButton}
+             <div className="load-spinner">Loading</div>
+           </div>
+           // If there is error with the fetch request inform user
+         : this.state.hasError ?
+         <div className="error-screen">
+           {backButton}
+           <p className="error-message">Oops! Could not get details from foursquare.</p>
+         </div>
          :
+         // If everything is ok with the request display the details
          <div>
-           <button className="close-details" type="button" onClick={this.closeDetails}>X</button>
+           {backButton}
            <h2>{this.props.title}</h2>
            <p>{this.props.placeId}</p>
          </div>
