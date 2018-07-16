@@ -2,8 +2,23 @@ import React, {Component} from 'react'
 import Filter from './Filter'
 import Place from './Place'
 import PlaceDetails from './PlaceDetails'
+// Check if properties passed are of required type
+import PropTypes from 'prop-types'
 
 class PlaceList extends Component {
+  // Here you define what the props passed to the component type should be,
+  // and wheter the property is required in order to work with the PlaceList component.
+  // If these props are not passed a message will be logged in console.
+  // Now you know that the app brakes because of incorrect props passed to the component.
+  static propTypes = {
+    places: PropTypes.array.isRequired,
+    selectedPlace: PropTypes.string.isRequired,
+    showDetails: PropTypes.func.isRequired,
+    closeDetails: PropTypes.func.isRequired,
+    setCategory: PropTypes.func.isRequired,
+    category: PropTypes.string.isRequired
+  }
+
   render() {
 
     return (

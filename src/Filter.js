@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Filter extends Component{
+  static propTypes = {
+    setCategory: PropTypes.func.isRequired,
+    category: PropTypes.string.isRequired
+  }
 
   state = {
     // Holds the value selected in the options

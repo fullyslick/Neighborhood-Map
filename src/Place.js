@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
+// Check if properties passed are of required type
+import PropTypes from 'prop-types'
 
 class Place extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    showDetails: PropTypes.func.isRequired
+  }
 
   // invokes showDetails in master MapContainer
   showDetails = () => {
