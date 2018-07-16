@@ -21,7 +21,16 @@ export class MapContainer extends Component {
 
     // Holds the id of the selected marker/place,
     // used to display only selected places on PlaceList and Map
-    selectedPlaceId: ""
+    selectedPlaceId: "",
+
+    // Changes to true if there is some error with google maps component
+    hasError: false
+  }
+
+  // If component is unable to mounth there is some problem with google maps component
+  componentDidCatch(error, info) {
+      this.setState({ hasError: true });
+      console.log(error);
   }
 
   // Change color of marker on mouse over event
@@ -122,6 +131,12 @@ export class MapContainer extends Component {
       }
     }
 
+    // If there is error with the google maps component display a message
+    if (this.state.hasError) {
+      return(
+        <div className="google-maps-error">There is some problem with google maps!</div>
+      )
+    }
     return(
       <main>
         <div className="map-holder">
