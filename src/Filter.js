@@ -27,7 +27,7 @@ class Filter extends Component{
          <select value={this.state.value} onChange={this.handleChange}>
            <option value="all">All</option>
            <option value="sights">Sights</option>
-           <option value="bars">Bar</option>
+           <option value="bars">Bars</option>
            <option value="restaurants">Restaurants</option>
          </select>
        </label>

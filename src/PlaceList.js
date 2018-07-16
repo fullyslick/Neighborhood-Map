@@ -22,7 +22,7 @@ class PlaceList extends Component {
   render() {
 
     return (
-         <sidebar className="place-list">
+         <aside className="place-list">
            {/* Render place's details if there is place selected */}
            { this.props.selectedPlace ?
              // Pass placeId to prompt foursq API, and hardcoded title of place
@@ -47,7 +47,7 @@ class PlaceList extends Component {
                ))}
              </div>
            }
-         </sidebar>
+         </aside>
    )
   }
 }
