@@ -20,8 +20,8 @@ class PlaceDetails extends Component {
   // Fetch the place's details from foursquare
   fetchDetails = (placeId) => {
     const clientId = "2W33ALUML5UVZMFH5UWT0MLMQWXFJCRIICNCHAVADOK4FAUP"
-    const clientSecret = "XP5APABV2VN1ZVRVTAIKORAJVHGY4Y5BJIUHUBGOEKQ51JBF"
-    const version = 20180716
+    const clientSecret = "HHEWFTDT5LZRKJQNDL2J5X2B4TE20J33KMBUM0A2EVPXQFJX"
+    const version = 20180718
     const url = `https://api.foursquare.com/v2/venues/${placeId}?&client_id=${clientId}&client_secret=${clientSecret}&v=${version}`
 
     fetch(url)
@@ -36,7 +36,7 @@ class PlaceDetails extends Component {
     })
     .then((json) => {
       // set the json response to fetchedPlace
-      this.setState({fetchedPlace: json})
+      this.setState({fetchedPlace: json.response})
     })
     .then(() => {
       // set loading to false, to remove loading dialog from screen
@@ -45,6 +45,7 @@ class PlaceDetails extends Component {
     .catch(error => {
       // if any error occures, change hasError to display error message to UI
       this.setState({hasError: true})
+      console.log(error);
     })
   }
 
@@ -60,9 +61,13 @@ class PlaceDetails extends Component {
   }
 
   render() {
-    console.log(this.state.fetchedPlace);
+
     // Refers to closing details (back) button
     const backButton = <button className="close-details" type="button" onClick={this.closeDetails}>X</button>;
+
+    // Holds the response from foursquare server
+    const details = this.state.fetchedPlace.venue;
+
     return (
        <div className="PlaceDetails">
         {/* Check if the request is complete */}
@@ -76,14 +81,34 @@ class PlaceDetails extends Component {
          : this.state.hasError ?
          <div className="error-screen">
            {backButton}
-           <p className="error-message">Oops! Could not get details from foursquare.</p>
+           <p className="error-message">Oops! Could not get details for {this.props.title} from foursquare.</p>
          </div>
          :
          // If everything is ok with the request display the details
          <div>
            {backButton}
-           <h2>{this.props.title}</h2>
-           <p>{this.props.placeId}</p>
+           <h2 className="place-title">{this.props.title}</h2>
+             {details.bestPhoto ?
+             <img className='place-photo' alt={this.props.title} src={details.bestPhoto.prefix+'300x300'+details.bestPhoto.suffix} />
+             : <span className="no-image-found">No Image available</span> }
+           <p className="place-address">{details.location.formattedAddress}</p>
+           <p className="place-phone">{details.contact.formattedPhone}</p>
+           <p className="place-description">{details.description}</p>
+           <span className="review-heading">Reviews:</span>
+           <ul>
+           {/* Check if there are reviews for this place
+               and if there are map over all reviews availbale */}
+           { details.tips ?
+            details.tips.groups[0].items.map( (review) =>
+            <li key={review.id}>
+              <p className="reviewer-name"> {review.user.firstName} {review.user.lastName}: </p>
+              <p className="review">{review.text}</p>
+            </li>
+             )
+             :
+             <span className="no-reviews">There are no reviews for this place yet!</span>
+           }
+          </ul>
          </div>
          }
        </div>
