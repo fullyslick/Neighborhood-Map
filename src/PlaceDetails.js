@@ -70,7 +70,7 @@ class PlaceDetails extends Component {
            // Show loading screen untill fetch request is complete
            <div className="loading-screen">
              {backButton}
-             <div className="load-spinner">Loading</div>
+             <div className="load-spinner"></div>
            </div>
            // If there is error with the fetch request inform user
          : this.state.hasError ?
