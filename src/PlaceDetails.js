@@ -64,7 +64,8 @@ class PlaceDetails extends Component {
     return (
        <div className="PlaceDetails">
         {/* Check if the request is complete */}
-         {this.state.loading ? <div className="loading-scren">Loading . . .</div>
+         {this.state.loading ? <div className="loading-screen">Loading . . .</div>
+         : this.state.hasError ? <div className="error-screen">Oops! Could not get details from foursquare.</div>
          :
          <div>
            <button className="close-details" type="button" onClick={this.closeDetails}>X</button>
