@@ -69,7 +69,7 @@ class PlaceDetails extends Component {
     const details = this.state.fetchedPlace.venue;
 
     return (
-       <div className="place-details">
+       <div className="place-details-panel">
         {/* Check if the request is complete */}
          {this.state.loading ?
            // Show loading screen untill fetch request is complete
@@ -91,6 +91,7 @@ class PlaceDetails extends Component {
              {details.bestPhoto ?
              <img className='place-photo' alt={this.props.title} src={details.bestPhoto.prefix+'300x300'+details.bestPhoto.suffix} />
              : <span className="no-image-found">No Image available</span> }
+           <div className="place-details-content" >
            <p className="place-address">{details.location.formattedAddress}</p>
            <p className="place-phone">{details.contact.formattedPhone}</p>
            <p className="place-description">{details.description}</p>
@@ -110,6 +111,7 @@ class PlaceDetails extends Component {
            }
           </ul>
           <span className=" attribution">Powered by <span className="foursquare-logo"></span></span>
+         </div>
          </div>
          }
        </div>

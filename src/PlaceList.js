@@ -32,7 +32,7 @@ class PlaceList extends Component {
                closeDetails={this.props.closeDetails}
                /> :
              // Render places list if there is no place selected
-             <div>
+             <div className="filter-places-holder">
                <Filter
                  setCategory={this.props.setCategory}
                  category={this.props.category}

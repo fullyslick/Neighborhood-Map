@@ -16,6 +16,11 @@ html {
   font-size: 100.01%;
 }
 
+body {
+  height: 100vh;
+  background: #fceac2;
+}
+
 /* Header */
 
 header {
@@ -25,7 +30,6 @@ header {
   height: 50px;
   display: table;
   width: 100%;
-  padding: 0 0 0 20px;
   background: #0c88ff;
   background: -moz-linear-gradient(-45deg, #0c88ff 0%, #ddf1f9 65%, #feffff 100%);
   background: -webkit-linear-gradient(-45deg, #0c88ff 0%, #ddf1f9 65%, #feffff 100%);
@@ -42,6 +46,7 @@ h1 {
   font: normal 24px Fredoka One, cursive;
   color: #fff;
   text-shadow: 1px 1px 3px #000;
+  padding: 0 0 0 20px;
 }
 
 /* Components structure */
@@ -70,6 +75,10 @@ main {
   overflow-y: scroll;
   top: 50px;
   bottom: 0;
+}
+
+.filter-places-holder {
+  padding: 0 0 50px 0;
 }
 
 .map-holder {
@@ -164,11 +173,16 @@ select {
   border: 2px solid #f7f7f7;
 }
 
-.place-details {
+.place-details-panel {
   background: #f7f7f7;
-  margin: 20px;
+  margin: 20px 20px 70px 20px;
   border-radius: 20px;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+}
+
+.place-details-content {
+  padding: 20px 30px;
+  font: normal 18px/36px 'Quicksand', sans-serif;
 }
 
 /* Spinner rotattion animation */
@@ -213,9 +227,8 @@ select {
     order: 2;
     width: 100%;
     position: relative;
+    overflow-y: visible;
     margin-top: 350px;
-    overflow-y: hidden;
-    height: 100vh;
   }
 }
 
