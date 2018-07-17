@@ -139,7 +139,11 @@ export class MapContainer extends Component {
     }
     return(
       <main>
-        <div className="map-holder">
+        <div
+          className="map-holder"
+          aria-label="Area Map"
+          role="application"
+          aria-hidden="true">
          <Map
           style={{width: '100%', height: '100%', position: 'relative'}}
           google={this.props.google}

@@ -21,7 +21,7 @@ class Place extends Component {
 
   render() {
     return (
-      <button className="place-in-list" type="button" onClick={this.showDetails}>{this.props.title}</button>
+      <button className="place-in-list" type="button" tabindex="2" onClick={this.showDetails}>{this.props.title}</button>
     )
   }
 }

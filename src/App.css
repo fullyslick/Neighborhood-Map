@@ -110,6 +110,10 @@ main {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
 }
 
+.place-in-list:focus{
+  background: #ddf1f9;
+}
+
 /* Filter */
 
 label {
@@ -133,6 +137,11 @@ select {
   padding: 5px;
   background: #f7f7f7;
   border: 1px solid #656565;
+}
+
+select:focus{
+  border: 1px solid #afd8ff;
+  border-radius: 5px;
 }
 
 /* Place Details View */

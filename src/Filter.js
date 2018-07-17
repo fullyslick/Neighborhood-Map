@@ -24,7 +24,11 @@ class Filter extends Component{
     return(
       <label>
          Category:
-         <select value={this.state.value} onChange={this.handleChange}>
+         <select
+           tabindex="1"
+           aria-label= "Select Category"
+           value={this.state.value}
+           onChange={this.handleChange}>
            <option value="all">All</option>
            <option value="sights">Sights</option>
            <option value="bars">Bars</option>
