@@ -65,7 +65,7 @@ main {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   position: relative;
   z-index: 900;
-  background: #f7f7f7;
+  background: #ffe9c3;
   position: fixed;
   overflow-y: scroll;
   top: 50px;
@@ -85,6 +85,15 @@ main {
   width: 100%;
   text-align: left;
   padding: 5px;
+  font: bold 18px/36px 'Quicksand', sans-serif;
+  display: block;
+  width: 95%;
+  margin: 10px auto;
+  padding: 10px 0 10px 20px;
+  border: none;
+  background: #f7f7f7;
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
 }
 
 /* Filter */
@@ -105,6 +114,7 @@ label {
 
 select {
   font: normal 16px Fredoka One, cursive;
+  font: bold 16px/32px 'Quicksand', sans-serif;
   margin: 0 0 0 20px;
 }
 
@@ -159,6 +169,8 @@ select {
     order: 2;
     width: 100%;
     position: relative;
-    margin-top: 400px;
+    margin-top: 350px;
+    overflow-y: hidden;
+    height: 100vh;
   }
 }
