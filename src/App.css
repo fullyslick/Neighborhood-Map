@@ -77,8 +77,20 @@ main {
   bottom: 0;
 }
 
+/* Animation for filter and places appearance*/
+
+@keyframes showFromLeft {
+  0% {
+    transform: translate(-500px, 0);
+  }
+  100% {
+    transform: translate( 0, 0);
+  }
+}
+
 .filter-places-holder {
   padding: 0 0 50px 0;
+  animation: showFromLeft 0.2s linear 1;
 }
 
 .map-holder {
@@ -110,7 +122,7 @@ main {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
 }
 
-.place-in-list:focus{
+.place-in-list:focus {
   background: #ddf1f9;
 }
 
@@ -139,7 +151,7 @@ select {
   border: 1px solid #656565;
 }
 
-select:focus{
+select:focus {
   border: 1px solid #afd8ff;
   border-radius: 5px;
 }
@@ -182,11 +194,23 @@ select:focus{
   border: 2px solid #f7f7f7;
 }
 
+@keyframes popUp {
+  0% {
+    transform: scale(0,0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1,1);
+    opacity: 1;
+  }
+}
+
 .place-details-panel {
   background: #f7f7f7;
   margin: 20px 20px 70px 20px;
   border-radius: 20px;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  animation: popUp 0.2s linear 1;
 }
 
 .place-details-content {
