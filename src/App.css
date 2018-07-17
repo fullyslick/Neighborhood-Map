@@ -194,6 +194,10 @@ select:focus {
   color: #656565;
 }
 
+.close-details:focus {
+  color: #202020;
+}
+
 .close-details:hover {
   cursor: pointer;
 }
