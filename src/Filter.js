@@ -25,7 +25,7 @@ class Filter extends Component{
       <label>
          Category:
          <select
-           tabindex="1"
+           tabIndex="1"
            aria-label= "Select Category"
            value={this.state.value}
            onChange={this.handleChange}>

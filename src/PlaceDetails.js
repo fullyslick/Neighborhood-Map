@@ -63,7 +63,7 @@ class PlaceDetails extends Component {
   render() {
 
     // Refers to closing details (back) button
-    const backButton = <button className="close-details" type="button" onClick={this.closeDetails}>X</button>;
+    const backButton = <button className="close-details" type="button" tabIndex="1" onClick={this.closeDetails}>X</button>;
 
     // Holds the response from foursquare server
     const details = this.state.fetchedPlace.venue;
