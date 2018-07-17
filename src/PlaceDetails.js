@@ -92,18 +92,21 @@ class PlaceDetails extends Component {
              <img className='place-photo' alt={this.props.title} src={details.bestPhoto.prefix+'300x300'+details.bestPhoto.suffix} />
              : <span className="no-image-found">No Image available</span> }
            <div className="place-details-content" >
-           <p className="place-address">{details.location.formattedAddress}</p>
-           <p className="place-phone">{details.contact.formattedPhone}</p>
-           <p className="place-description">{details.description}</p>
-           <span className="review-heading">Reviews:</span>
+           <p className="details-label">Address:</p>
+           <p className="place-address">{details.location.formattedAddress ? details.location.formattedAddress : "Not found"}</p>
+           <p className="details-label">Phone:</p>
+           <p className="place-phone">{details.contact.formattedPhone ? details.contact.formattedPhone :  "Not found"}</p>
+           <p className="details-label">About:</p>
+           <p className="place-description">{details.description ? details.description : "Not found"}</p>
+           <p className="details-label reviews-heading">Reviews</p>
            <ul>
            {/* Check if there are reviews for this place
                and if there are map over all reviews availbale */}
            { details.tips ?
             details.tips.groups[0].items.map( (review) =>
-            <li key={review.id}>
+            <li className="review" key={review.id}>
               <p className="reviewer-name"> {review.user.firstName} {review.user.lastName}: </p>
-              <p className="review">{review.text}</p>
+              <p className="review-text">{review.text}</p>
             </li>
              )
              :
