@@ -120,10 +120,17 @@ main {
   -moz-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  transition: 0.2s;
 }
 
 .place-in-list:focus {
   background: #ddf1f9;
+}
+
+.place-in-list:hover {
+  color: #fff;
+  background: #0c88ff;
+  transition: 0.2s;
 }
 
 /* Filter */
