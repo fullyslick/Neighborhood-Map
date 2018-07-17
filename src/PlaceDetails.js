@@ -85,7 +85,7 @@ class PlaceDetails extends Component {
          </div>
          :
          // If everything is ok with the request display the details
-         <div>
+         <div className="details-wrapper">
            {backButton}
            <h2 className="place-title">{this.props.title}</h2>
              {details.bestPhoto ?

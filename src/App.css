@@ -101,6 +101,14 @@ main {
 }
 
 /* Places List View */
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .place-in-list {
   width: 100%;
@@ -121,6 +129,7 @@ main {
   -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   transition: 0.2s;
+  animation: appear 0.4s linear 1;
 }
 
 .place-in-list:focus {
@@ -164,7 +173,6 @@ select:focus {
 }
 
 /* Place Details View */
-
 .place-title {
   font: normal 24px Fredoka One, cursive;
   margin: 5px 0 20px 0;
@@ -217,6 +225,10 @@ select:focus {
   margin: 20px 20px 70px 20px;
   border-radius: 20px;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  animation: popUp 0.2s linear 1;
+}
+
+.details-wrapper{
   animation: popUp 0.2s linear 1;
 }
 
