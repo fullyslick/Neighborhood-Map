@@ -113,9 +113,12 @@ label {
 }
 
 select {
-  font: normal 16px Fredoka One, cursive;
   font: bold 16px/32px 'Quicksand', sans-serif;
   margin: 0 0 0 20px;
+  border-radius: 5px;
+  padding: 5px;
+  background: #f7f7f7;
+  border: 1px solid #656565;
 }
 
 /* Place Details View */
