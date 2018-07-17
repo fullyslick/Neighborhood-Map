@@ -66,6 +66,10 @@ main {
   position: relative;
   z-index: 900;
   background: #f7f7f7;
+  position: fixed;
+  overflow-y: scroll;
+  top: 50px;
+  bottom: 0;
 }
 
 .map-holder {
@@ -99,7 +103,7 @@ label {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#afd8ff', endColorstr='#0c88ff', GradientType=1);
 }
 
-select{
+select {
   font: normal 16px Fredoka One, cursive;
   margin: 0 0 0 20px;
 }
