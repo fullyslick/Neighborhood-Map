@@ -113,7 +113,7 @@ class PlaceDetails extends Component {
              <span className="no-reviews">There are no reviews for this place yet!</span>
            }
           </ul>
-          <span className=" attribution">Powered by <span className="foursquare-logo"></span></span>
+          <span className=" attribution">Powered by <a className="foursquare-link" href="https://foursquare.com/" target="_blank" rel="noopener noreferrer">foursquare</a></span>
          </div>
          </div>
          }
