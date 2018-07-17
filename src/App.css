@@ -91,7 +91,12 @@ main {
   margin: 10px auto;
   padding: 10px 0 10px 20px;
   border: none;
-  background: #f7f7f7;
+  background: #ffffff;
+  background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #e5e5e5 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #e5e5e5 100%);
+  background: radial-gradient(ellipse at center, #ffffff 0%, #e5e5e5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5', GradientType=1);
+  -moz-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
 }
@@ -123,11 +128,47 @@ select {
 
 /* Place Details View */
 
+.place-title {
+  font: normal 24px Fredoka One, cursive;
+  margin: 5px 0 20px 0;
+  width: 100%;
+  text-align: center;
+  float: left;
+  padding: 0 20px;
+}
+
 .close-details {
   float: right;
   display: block;
   width: 50px;
   height: 50px;
+  border-radius: 100%;
+  font: normal 24px Fredoka One, cursive;
+  border: none;
+  background: none;
+  color: #656565;
+}
+
+.close-details:hover {
+  cursor: pointer;
+}
+
+.place-photo {
+  margin: 0 auto;
+  float: none;
+  display: block;
+  max-width: 300px;
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
+  border: 2px solid #f7f7f7;
+}
+
+.place-details {
+  background: #f7f7f7;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.75);
 }
 
 /* Spinner rotattion animation */
@@ -175,5 +216,15 @@ select {
     margin-top: 350px;
     overflow-y: hidden;
     height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  /* Place Details View */
+  .place-photo {
+    margin: 0 auto;
+    float: none;
+    display: block;
+    width: 90%;
   }
 }

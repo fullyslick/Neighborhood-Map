@@ -69,7 +69,7 @@ class PlaceDetails extends Component {
     const details = this.state.fetchedPlace.venue;
 
     return (
-       <div className="PlaceDetails">
+       <div className="place-details">
         {/* Check if the request is complete */}
          {this.state.loading ?
            // Show loading screen untill fetch request is complete
