@@ -25,7 +25,9 @@ class PlaceList extends Component {
          <aside className="place-list" role="list">
            {/* Render place's details if there is place selected */}
            { this.props.selectedPlace ?
-             // Pass placeId to prompt foursq API, and hardcoded title of place
+             // Pass placeId to prompt Foursquare API,
+             // hardcoded title of place,
+             // closeDetails method on master MapContainer
              <PlaceDetails
                placeId={this.props.selectedPlace}
                title={this.props.places[0].name}

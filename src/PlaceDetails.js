@@ -17,62 +17,59 @@ class PlaceDetails extends Component {
     // Holds the response from fetch request
     fetchedPlace: []
   }
-  // Fetch the place's details from foursquare
+
+  // Fetch the place's details from Foursquare API
   fetchDetails = (placeId) => {
     const clientId = "2W33ALUML5UVZMFH5UWT0MLMQWXFJCRIICNCHAVADOK4FAUP"
     const clientSecret = "HHEWFTDT5LZRKJQNDL2J5X2B4TE20J33KMBUM0A2EVPXQFJX"
     const version = 20180718
     const url = `https://api.foursquare.com/v2/venues/${placeId}?&client_id=${clientId}&client_secret=${clientSecret}&v=${version}`
 
-    fetch(url)
-    .then(response => {
+    fetch(url).then(response => {
       // If there is problem with the response,
       // change hasError
       if (!response.ok) {
         this.setState({hasError: true})
       }
-      // if there is no error return the json response
+      // If there is no error return the json response
       return response.json()
-    })
-    .then((json) => {
-      // set the json response to fetchedPlace
+    }).then((json) => {
+      // Set the json response to fetchedPlace
       this.setState({fetchedPlace: json.response})
-    })
-    .then(() => {
-      // set loading to false, to remove loading dialog from screen
+    }).then(() => {
+      // Set loading to false, to remove loading dialog from screen
       this.setState({loading: false})
-    })
-    .catch(error => {
-      // if any error occures, change hasError to display error message to UI
+    }).catch(error => {
+      // If any error occures, change hasError to display error message to UI
       this.setState({hasError: true})
       console.log(error);
     })
   }
 
   // Closes the details view,
-  // By calling closeDetails on master MapContainer
+  // by calling closeDetails on master MapContainer
   closeDetails = () => {
     this.props.closeDetails();
   }
 
-  // When component is mounted fecth the details about the place
+  // When component is mounted fecth the details about the selected place
   componentDidMount = () => {
     this.fetchDetails(this.props.placeId);
   }
 
   render() {
 
-    // Refers to closing details (back) button
+    // Stores to closing details (back) button
     const backButton = <button className="close-details" type="button" tabIndex="1" onClick={this.closeDetails}>X</button>;
 
-    // Holds the response from foursquare server
+    // Stores the response from Foursquare server
     const details = this.state.fetchedPlace.venue;
 
     return (
        <div className="place-details-panel">
         {/* Check if the request is complete */}
          {this.state.loading ?
-           // Show loading screen untill fetch request is complete
+           // Show loading screen if the fetch request is not completed
            <div className="loading-screen">
              {backButton}
              <div className="load-spinner"></div>
@@ -88,35 +85,36 @@ class PlaceDetails extends Component {
          <div className="details-wrapper">
            {backButton}
            <h2 className="place-title">{this.props.title}</h2>
+             {/* If there is photo available from Foursquare response display it, else inform the user */}
              {details.bestPhoto ?
-             <img className='place-photo' alt={this.props.title} src={details.bestPhoto.prefix+'300x300'+details.bestPhoto.suffix} />
+               <img className='place-photo' alt={this.props.title} src={details.bestPhoto.prefix+'300x300'+details.bestPhoto.suffix} />
              : <span className="no-image-found">No Image available</span> }
-           <div className="place-details-content" >
-           <p className="details-label">Address:</p>
-           <p className="place-address">{details.location.formattedAddress ? details.location.formattedAddress : "Not found"}</p>
-           <p className="details-label">Phone:</p>
-           <p className="place-phone">{details.contact.formattedPhone ? details.contact.formattedPhone :  "Not found"}</p>
-           <p className="details-label">About:</p>
-           <p className="place-description">{details.description ? details.description : "Not found"}</p>
-           <p className="details-label reviews-heading">Reviews</p>
-           <ul>
-           {/* Check if there are reviews for this place
-               and if there are map over all reviews availbale */}
-           { details.tips ?
-            details.tips.groups[0].items.map( (review) =>
-            <li className="review" key={review.id}>
-              <p className="reviewer-name"> {review.user.firstName} {review.user.lastName}: </p>
-              <p className="review-text">{review.text}</p>
-            </li>
-             )
-             :
-             <span className="no-reviews">There are no reviews for this place yet!</span>
-           }
-          </ul>
-          <span className=" attribution">Powered by <a className="foursquare-link" href="https://foursquare.com/" target="_blank" rel="noopener noreferrer">foursquare</a></span>
-         </div>
-         </div>
-         }
+               <div className="place-details-content" >
+                 <p className="details-label">Address:</p>
+                 <p className="place-address">{details.location.formattedAddress ? details.location.formattedAddress : "Not found"}</p>
+                 <p className="details-label">Phone:</p>
+                 <p className="place-phone">{details.contact.formattedPhone ? details.contact.formattedPhone :  "Not found"}</p>
+                 <p className="details-label">About:</p>
+                 <p className="place-description">{details.description ? details.description : "Not found"}</p>
+                 <p className="details-label reviews-heading">Reviews</p>
+                 <ul>
+                 {/* Check if there are reviews for this place and if there are map over all reviews availbale */}
+                 { details.tips ?
+                   details.tips.groups[0].items.map((review) =>
+                    <li className="review" key={review.id}>
+                      <p className="reviewer-name"> {review.user.firstName} {review.user.lastName}: </p>
+                      <p className="review-text">{review.text}</p>
+                    </li>
+                    )
+                   :
+                   // If there are no reviews inform the user
+                   <span className="no-reviews">There are no reviews for this place yet!</span>
+                  }
+                 </ul>
+                 <span className=" attribution">Powered by <a className="foursquare-link" href="https://foursquare.com/" target="_blank" rel="noopener noreferrer">foursquare</a></span>
+                </div>
+          </div>
+        }
        </div>
    )
   }

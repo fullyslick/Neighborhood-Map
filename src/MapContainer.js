@@ -3,24 +3,24 @@ import React, {Component} from 'react'
 // which will configure the request to Google Maps API
 import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import PlaceList from './PlaceList'
-// import the places data
+// import the places data from local .json file
 import jsonPlaces from './data/places.json'
-// import the map styles data
+// import the map's styles data from local .json file
 import jsonMapStyles from './data/mapStyles.json'
 
 export class MapContainer extends Component {
 
   state = {
-    // Holds all the places that will be rendered
-    // Load them from a local .json file
+    // Holds all the places that will be rendered,
+    // loaded from local .json file
     places: jsonPlaces.places,
 
     // Holds the chosen category,
-    // used to filter out the markers and PlaceList by category
+    // used to filter out the markers and places by category
     categoryChosen: "all", // default is "all"
 
     // Holds the id of the selected marker/place,
-    // used to display only selected places on PlaceList and Map
+    // used to display only selected places on PlaceList and on map
     selectedPlaceId: "",
 
     // Changes to true if there is some error with google maps component
@@ -33,7 +33,7 @@ export class MapContainer extends Component {
       console.log(error);
   }
 
-  // Change color of marker on mouse over event
+  // Changes the color of marker on mouse over event
   onMouseoverMarker = (props, marker, e) => {
     let markerImage = {
       url: "./icons/pin-orange.png",
@@ -44,7 +44,7 @@ export class MapContainer extends Component {
     marker.setIcon(markerImage);
   }
 
-  // Change color of marker on mouse out event
+  // Changes the color of marker on mouse out event
   onMouseoutMarker = (props, marker, e) => {
     let markerImage = {
       url: "./icons/pin-blue.png",
@@ -55,16 +55,14 @@ export class MapContainer extends Component {
     marker.setIcon(markerImage);
   }
 
-  // Changes the state.selectedPlaceId
-  // Make only selected marker visible on the map,
-  // invokes displaying of foursquare details
+  // Calls showDetails() method on click of a marker
   onMarkerClick = (props, marker, e) => {
     this.showDetails(props.id);
   }
 
   // Changes the selected place,
   // displays the details of the place,
-  // leave only one marker on map
+  // leaves only one marker on map
   showDetails = (placeId) => {
     this.setState({selectedPlaceId: placeId });
   }
@@ -106,24 +104,23 @@ export class MapContainer extends Component {
     // Set the map styles to const for easy access
     const style = jsonMapStyles.styles;
 
-    // Holds the places to be shown depending:
-    // - chosen category
+    // Holds the places to be shown depending on chosen category or selected marker/place id
     let displayedPlaces;
 
-    // Holds the marker look, depending if it is selected or not
-    // By default its blue
+    // Holds the marker icon image, depending if it is selected or not,
+    // by default its blue icon
     let markerColor = "./icons/pin-blue.png";
 
     // Display only the chosen marker/place if selectedPlaceId has value
     if (this.state.selectedPlaceId) {
       displayedPlaces = this.state.places.filter((place) => place.foursqId === this.state.selectedPlaceId );
-      // Change marker color to be selected
+      // Change marker icon to be ornage (selected)
       markerColor = "./icons/pin-orange.png";
     }
      // Else there is no chosen marker, so display markers by category
      else {
-      // If categoryChosen = all, add to displayedPlaces all places
-      // Else - add to displayedPlaces those places which mach categoryChosen
+      // If categoryChosen = all, store all places in displayedPlaces,
+      // else store those places which mach categoryChosen in displayedPlaces
       if (this.state.categoryChosen === "all") {
         displayedPlaces = this.state.places.map( (place) => place );
       } else {
@@ -157,10 +154,10 @@ export class MapContainer extends Component {
            {/* Map over displayedPlaces to display their markers */}
            {displayedPlaces.map( (place) => (
              <Marker
-               // Allow hover effects only is there is no selected Place/ marker clicked
+               // Allow hover effects only if there is no selected place/ marker clicked
                onMouseover={!this.state.selectedPlaceId && this.onMouseoverMarker}
                onMouseout={!this.state.selectedPlaceId && this.onMouseoutMarker}
-               // Allow clicking on marker only is there is no selected Place/ marker clicked,
+               // Allow clicking on marker only is there is no selected place / marker clicked
                onClick={!this.state.selectedPlaceId && this.onMarkerClick}
                key={place.foursqId}
                id={place.foursqId}
@@ -172,7 +169,7 @@ export class MapContainer extends Component {
                      anchor: new this.props.google.maps.Point(32,32),
                      scaledSize: new this.props.google.maps.Size(32,32)
                    }}
-               // Show animation only is there is a selected Place / marker clicked
+               // Show animation only is there is a selected place / marker clicked
                animation={this.state.selectedPlaceId && this.props.google.maps.Animation.DROP} />
            ))}
          </Map>
