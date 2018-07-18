@@ -7,6 +7,9 @@ import PlaceList from './PlaceList'
 import jsonPlaces from './data/places.json'
 // import the map's styles data from local .json file
 import jsonMapStyles from './data/mapStyles.json'
+// importing pins icons to use on maps
+import bluePin from './icons/pin-blue.png'
+import orangePin from './icons/pin-orange.png'
 
 export class MapContainer extends Component {
 
@@ -36,7 +39,7 @@ export class MapContainer extends Component {
   // Changes the color of marker on mouse over event
   onMouseoverMarker = (props, marker, e) => {
     let markerImage = {
-      url: "./icons/pin-orange.png",
+      url: orangePin,
       anchor: new this.props.google.maps.Point(32, 32),
       scaledSize: new this.props.google.maps.Size(32, 32)
     }
@@ -47,7 +50,7 @@ export class MapContainer extends Component {
   // Changes the color of marker on mouse out event
   onMouseoutMarker = (props, marker, e) => {
     let markerImage = {
-      url: "./icons/pin-blue.png",
+      url: bluePin,
       anchor: new this.props.google.maps.Point(32, 32),
       scaledSize: new this.props.google.maps.Size(32, 32)
     }
@@ -109,13 +112,13 @@ export class MapContainer extends Component {
 
     // Holds the marker icon image, depending if it is selected or not,
     // by default its blue icon
-    let markerColor = "./icons/pin-blue.png";
+    let markerColor = bluePin;
 
     // Display only the chosen marker/place if selectedPlaceId has value
     if (this.state.selectedPlaceId) {
       displayedPlaces = this.state.places.filter((place) => place.foursqId === this.state.selectedPlaceId );
       // Change marker icon to be ornage (selected)
-      markerColor = "./icons/pin-orange.png";
+      markerColor = orangePin;
     }
      // Else there is no chosen marker, so display markers by category
      else {
