@@ -7,6 +7,9 @@
 This is my submission for [Udacity's Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). This is a single page application built on the React framework. The application displays a map of an area using [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial) and various points of interest such as sightseeings, restaurants, bars. The user can filter the displayed places by category. When clicking on map marker or listing button, additional information about the place is displayed. This information is provided using [FourSquare API](https://developer.foursquare.com/). All application components render on-screen in a responsive manner. The application meets all the accessibility criteria. The build version of the application uses "offline first technique" to load content from browsers cache, using service worker. Full specification are available here: [Udacity Project Rubric](https://review.udacity.com/#!/rubrics/1351/view)
 
 ## How to run the project
+You can check the live version [here](https://fullyslick.github.io/Neighborhood-Map/)
+or:
+
 The project requires [Node.js](https://nodejs.org/en/) and uses the [Create-React-App](https://github.com/facebook/create-react-app) package.
 
 1. Download or clone the project from repository.
